@@ -6,10 +6,12 @@ var app = angular.module('cleanSolutionApp', [
                           'cleanSolutionApp.notifications',
                           'cleanSolutionApp.cities',
                           'cleanSolutionApp.countries',
+                          'cleanSolutionApp.states',
                           'cleanSolutionApp.organization',
                           'cleanSolutionApp.cityCtrl',
                           'cleanSolutionApp.countryCtrl',
-                          'cleanSolutionApp.organizationCtrl'
+                          'cleanSolutionApp.organizationCtrl',
+                          'cleanSolutionApp.stateCtrl'
                           ]);
 
 app.controller('mainCtrl',['$scope','Configuration','Messages','Notifications',function($scope, Configuration, Messages,Notifications) {

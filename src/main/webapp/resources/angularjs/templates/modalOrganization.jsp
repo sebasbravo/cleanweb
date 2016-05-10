@@ -1,8 +1,6 @@
-<script src="resources/angularjs/controllers/stateCtrl.js"></script>
-<script src="resources/angularjs/services/state_service.js"></script>
 
 
-<div class="modal fade" id="modalOrganization" ng-app="cleanSolutionApp">
+<div class="modal fade" id="modalOrganization" ng-app="cleanSolutionApp" ng-controller="organizationCtrl">
 	<div class="modal-dialog">
 		<div class="modal-content">
 
@@ -59,24 +57,29 @@
 							placeholder="Tax Provincial ..." ng-model="organizationSel.txProv">
 					</div>
 
-					<div  ng-controller="countryCtrl">
+					<div>
 						<label>Pais</label>
-						 <select placeholder="Pais ..." name="country" id="countryId" ng-model="organizationSel.countryId">
+						 <select placeholder="Pais ..." name="country" id="countryId"
+						 		 ng-model="organizationSel.countryId"
+						 		 ng-change="showStates()">						 		
 							<option ng-repeat="country in countries.allCountries" value="{{country.countryId}}">{{country.nameEn}}</option>													
-						</select>
+						</select>						
 					</div>	
 					
-					<div ng-controller="stateCtrl">
+					<div>
 						<label>Provincia</label>
-						 <select placeholder="Provincia ..." name="state" id="stateId" ng-model="organizationSel.stateId">
+						 <select placeholder="Provincia ..." name="state" id="stateId" 
+						 ng-model="organizationSel.stateId"
+						 ng-change="showCities()">
 							<option ng-repeat="state in states.statesByCountry" value="{{state.stateId}}">{{state.name}}</option>													
 						</select>
 					</div>
 					
-					<div ng-controller="cityCtrl">
+					<div>
 						<label>Ciudad</label>
-						 <select placeholder="Provincia ..." name="state" id="stateId" ng-model="organizationSel.cityId">
-							<option ng-repeat="city in cities.citiesByState" value="{{city.cityId}}">{{city.name}}</option>													
+						 <select placeholder="Ciudad ..." name="city" id="cityId" 
+						 ng-model="organizationSel.cityId">
+							<option ng-repeat="city in cities.cities" value="{{city.cityId}}">{{city.name}}</option>													
 						</select>
 					</div>				
 

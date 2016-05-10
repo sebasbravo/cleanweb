@@ -42,6 +42,10 @@ public class GeneralBusinessDelegate implements IGeneralBusinessDelegate {
 	public Cities getCityById(Integer cityId) throws Exception {
 		return citiesService.getCityById(cityId);
 	}
+	@Override
+	public List<Cities> findCitiesByState(Integer stateId) throws Exception {
+		return citiesService.findByState(stateId);
+	}
 
 	@Override
 	public List<CitiesDTO> getDataCity() throws Exception {
@@ -108,7 +112,6 @@ public class GeneralBusinessDelegate implements IGeneralBusinessDelegate {
 	public Organization findOrganizationByName(String name) throws Exception {
 		return organizationService.findOrganizationByName(name);
 	}
-
 	
 
 }

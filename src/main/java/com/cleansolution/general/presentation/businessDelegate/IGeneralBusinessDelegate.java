@@ -14,6 +14,7 @@ public interface IGeneralBusinessDelegate {
 
 	public List<Cities> getCities() throws Exception;
 	public Cities getCityById(Integer cityId) throws Exception;
+	 public List<Cities> findCitiesByState(Integer stateId)throws Exception;
 	public List<CitiesDTO> getDataCity() throws Exception;
 	public List<Country> getCountry() throws Exception;
 	public List<States> getStates() throws Exception;

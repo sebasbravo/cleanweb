@@ -129,4 +129,23 @@ public class CityService implements ICityService {
 	        }
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cities> findByState(Integer stateId) throws Exception {
+		log.debug("finding cities by State instances");
+		List<Cities> cities = new ArrayList<Cities>();
+
+		try {
+
+			cities = cityDao.findByState(stateId);
+
+		} catch (Exception e) {
+			log.error("finding Cities by state failed", e);
+			throw new MessManager().new GettingException(MessManager.ID + "Cities");
+		} finally {
+		}
+
+		return cities;
+	}
+
 }

@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.cleansolution.general.dao.ICountryDAO;
 import com.cleansolution.general.model.Country;
+import com.cleansolution.general.model.States;
 import com.cleansolution.general.presentation.businessDelegate.IGeneralBusinessDelegate;
 
 
@@ -41,6 +42,17 @@ public class CountryDaoTest{
 		Country c2 = countryDao.findById(id);
 		
 		assertTrue(c1.getCountryId().equals(c2.getCountryId()));
+	}
+	
+	@Test
+	public void testFindStatesByCountry() throws Exception{
+		
+		Integer countryId = 37;
+		
+		List<States> statesByCountry = bdelegate.getStatesByCountry(countryId);
+		
+		assertTrue(statesByCountry.size() > 0);
+		
 	}
 
 	

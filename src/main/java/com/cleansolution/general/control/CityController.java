@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cleansolution.general.model.Cities;
+import com.cleansolution.general.model.States;
 import com.cleansolution.general.presentation.businessDelegate.IGeneralBusinessDelegate;
 
 
@@ -26,15 +29,14 @@ public class CityController {
 		return "city";
 	}
 	
-	@RequestMapping(value="/city/", method = RequestMethod.GET)
-	public ResponseEntity<List<Cities>> allCities() throws Exception{
-		List<Cities> cities = businessDelegate.getCities();
-			if(cities.isEmpty()){
-				return new ResponseEntity<List<Cities>>(HttpStatus.NO_CONTENT);
-			}
-		
-		return new ResponseEntity<List<Cities>>(cities, HttpStatus.OK);
-		
+	@RequestMapping(value="/allCities", method = RequestMethod.GET)
+	public @ResponseBody List<Cities> allCities() throws Exception{
+		return businessDelegate.getCities();
+	}
+	
+	@RequestMapping(value="/citiesByState", method = RequestMethod.GET)
+	public @ResponseBody List<Cities> citiesByState(@RequestParam(value="stateId", required=true) Integer stateId) throws Exception{
+		return businessDelegate.findCitiesByState(stateId);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cleansolution.general.model.States;
@@ -32,8 +33,8 @@ public class StateController {
 	}
 	
 
-	@RequestMapping(value="/statesByCountry/{countryId}", method = RequestMethod.GET)
-	public @ResponseBody List<States> statesByCountry(@PathVariable("countryId") Integer countryId) throws Exception{
+	@RequestMapping(value="/statesByCountry", method = RequestMethod.GET)
+	public @ResponseBody List<States> statesByCountry(@RequestParam(value="countryId", required=true) Integer countryId) throws Exception{
 		return businessDelegate.getStatesByCountry(countryId);
 	}
 		

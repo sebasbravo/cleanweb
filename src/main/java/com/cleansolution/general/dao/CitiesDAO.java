@@ -31,6 +31,11 @@ public class CitiesDAO extends JpaDao<Cities, Integer> implements ICitiesDAO {
 	public List<Cities> findAll() throws DaoException {
 		return entityManager.createNamedQuery("Cities.findAll").getResultList();
 	}
+
+	@Override
+	public List<Cities> findByState(Integer stateId) throws DaoException {
+		return entityManager.createNamedQuery("Cities.findByState").setParameter("stateId", stateId).getResultList();
+	}
 	
 	
 }

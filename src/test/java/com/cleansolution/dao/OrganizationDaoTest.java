@@ -15,6 +15,7 @@ import com.cleansolution.general.daoapi.DaoException;
 import com.cleansolution.general.model.Address;
 import com.cleansolution.general.model.Organization;
 import com.cleansolution.general.model.Party;
+import com.cleansolution.general.presentation.businessDelegate.IGeneralBusinessDelegate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -26,6 +27,9 @@ public class OrganizationDaoTest {
 
 	@Autowired
 	ICitiesDAO cityDao;
+	
+	@Autowired
+	IGeneralBusinessDelegate businessDelegate;
 
 	@Test
 	public void insertOrganizationTest() throws DaoException {

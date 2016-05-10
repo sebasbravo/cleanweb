@@ -1,28 +1,23 @@
 var app = angular.module('cleanSolutionApp.states', []);
 
-app.factory('States', ['$http','$q', function ($http, $q) {
-	
-	var self = {
-			
-			'statesByCountryId':[],
-			
-			loadPage: function(){
-				
-				var d = $q.defer();
-				
-				$http.get('allCountries').success(function(data){
-					
-				self.allCountries = data;
-					
-					return d.resolve();
-				});
-				
-				
-				return d.promise;
-			}
+app.factory('States', [
+		'$http',
+		'$q',
+		function($http, $q) {
 
+			var self = {
 
-	};
+				'statesByCountry' : [],
 
-	return self ;
-}])
+				loadPageSates : function(countryId) {
+					var d = $q.defer();
+					$http.get('statesByCountry?countryId=' + countryId)
+							.success(function(data) {
+								self.statesByCountry = data;
+								return d.resolve();
+							})
+					return d.promise;
+				}
+			};
+			return self;
+		} ])

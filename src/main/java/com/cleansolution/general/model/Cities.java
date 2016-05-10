@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NamedQueries({
 				@NamedQuery(name = "Cities.findAll", query = "SELECT c FROM Cities c"),
 				@NamedQuery(name = "Cities.findById", query = "SELECT c FROM Cities c WHERE c.cityId = :cityId"),
-				@NamedQuery(name = "Cities.findByName", query = "SELECT c FROM Cities c WHERE c.name = :name")})
+				@NamedQuery(name = "Cities.findByName", query = "SELECT c FROM Cities c WHERE c.name = :name"),
+				@NamedQuery(name = "Cities.findByState", query = "SELECT c FROM Cities c JOIN  c.states p WHERE p.stateId = :stateId")
+				})
 public class Cities implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;

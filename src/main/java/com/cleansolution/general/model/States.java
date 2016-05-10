@@ -24,7 +24,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@NamedQuery(name = "States.findAll", query = "SELECT c FROM States c"),
 	@NamedQuery(name = "States.findById", query = "SELECT c FROM States c WHERE c.stateId = :stateId"),
 	@NamedQuery(name = "States.findByName", query = "SELECT c FROM States c WHERE c.name = :name"),
-	@NamedQuery(name = "States.findByCountry", query = "SELECT c FROM States c JOIN  c.country p WHERE p.countryId = :countryId"),})
+	@NamedQuery(name = "States.findByCountry", query = "SELECT c FROM States c JOIN  c.country p WHERE p.countryId = :countryId")
+	})
 
 public class States implements java.io.Serializable {
 
@@ -43,6 +44,7 @@ public class States implements java.io.Serializable {
 	@Column(name = "abbreviation", nullable = false, length = 5)
 	private String abbreviation;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "states")
+	@JsonIgnore
 	private List<Cities> citieses;
 
 	public States() {

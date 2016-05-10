@@ -16,6 +16,8 @@ public interface ICityService {
 
     public Cities getCityById(Integer cityId) throws Exception;
     
+    public List<Cities> findByState(Integer stateId)throws Exception;
+    
     public List<CitiesDTO> getDataCity() throws Exception;
 
 }

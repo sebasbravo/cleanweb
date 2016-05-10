@@ -10,6 +10,7 @@
     <script src="resources/angularjs/controllers/cityCtrl.js"></script>
     <script src="resources/angularjs/controllers/countryCtrl.js"></script>
     <script src="resources/angularjs/controllers/organizationCtrl.js"></script>
+    <script src="resources/angularjs/controllers/stateCtrl.js"></script>
     
 
     <!-- Servicios -->
@@ -20,6 +21,7 @@
     <script src="resources/angularjs/services/cities_service.js"></script>
     <script src="resources/angularjs/services/country_service.js"></script>
     <script src="resources/angularjs/services/organization_service.js"></script>
+    <script src="resources/angularjs/services/state_service.js"></script>
     
 
 	<!-- REQUIRED JS SCRIPTS -->
