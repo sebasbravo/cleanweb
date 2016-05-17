@@ -1,6 +1,9 @@
 
 
-<div class="modal fade" id="modalOrganization" ng-app="cleanSolutionApp" ng-controller="organizationCtrl">
+<div class="modal fade" id="modalOrganization" 
+	ng-app="cleanSolutionApp" 
+	ng-controller="organizationCtrl">
+	
 	<div class="modal-dialog">
 		<div class="modal-content">
 
@@ -12,8 +15,10 @@
 				<h4 class="modal-title">Organization:</h4>
 			</div>
 
-			<form name="frmOrganization" ng-submit="save(organizationSel, frmOrganization)"
-				novalidate="novalidate">
+			<form name="frmOrganization" 
+			ng-submit="saveOrganizationFrm(organizationSel, frmOrganization)"
+				novalidate="novalidate"
+				disable-dynamic-validation>
 
 				<div class="modal-body">
 
@@ -38,7 +43,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label>Email</label> <input type="text" class="form-control"
+						<label>Email</label> <input type="email" class="form-control"
 							placeholder="Email ..." ng-model="organizationSel.email">
 					</div>
 					
@@ -61,7 +66,7 @@
 						<label>Pais</label>
 						 <select placeholder="Pais ..." name="country" id="countryId"
 						 		 ng-model="organizationSel.countryId"
-						 		 ng-change="showStates()">						 		
+						 		 ng-change="showStates()" required>						 		
 							<option ng-repeat="country in countries.allCountries" value="{{country.countryId}}">{{country.nameEn}}</option>													
 						</select>						
 					</div>	
@@ -70,7 +75,7 @@
 						<label>Provincia</label>
 						 <select placeholder="Provincia ..." name="state" id="stateId" 
 						 ng-model="organizationSel.stateId"
-						 ng-change="showCities()">
+						 ng-change="showCities()" required>
 							<option ng-repeat="state in states.statesByCountry" value="{{state.stateId}}">{{state.name}}</option>													
 						</select>
 					</div>
@@ -78,21 +83,25 @@
 					<div>
 						<label>Ciudad</label>
 						 <select placeholder="Ciudad ..." name="city" id="cityId" 
-						 ng-model="organizationSel.cityId">
+						 ng-model="organizationSel.cityId" required>
 							<option ng-repeat="city in cities.cities" value="{{city.cityId}}">{{city.name}}</option>													
 						</select>
 					</div>				
 
 					<div class="form-group">
-						<label>Codigo postal</label> <input type="text"
+						<label>Codigo postal XXXYYY</label> 
+						<input type="text"
 							class="form-control" placeholder="Codigo postal ..."
-							ng-model="organizationSel.postalCode">
+							ng-model="organizationSel.postalCode" 
+							ng-minlength="6"
+							ng-maxlength="6"
+							required>
 					</div>
 
 					<div class="form-group">
 						<label>Direccion</label>
 						<textarea type="text" class="form-control"
-							placeholder="Direccion ..." ng-model="organizationSel.civicAddress"></textarea>
+							placeholder="Direccion ..." ng-model="organizationSel.civicAddress" required></textarea>
 					</div>
 
 				</div>

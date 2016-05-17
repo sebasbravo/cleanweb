@@ -5,6 +5,7 @@ app.controller('organizationCtrl', [ '$scope', 'Organizations', 'Countries',
 		function($scope, Organizations, Countries, States, Cities) {
 
 			$scope.organizations = [];
+			$scope.organizationSel = {};
 			$scope.currentPage = 1;
 			$scope.pageSize = 10;
 
@@ -17,7 +18,10 @@ app.controller('organizationCtrl', [ '$scope', 'Organizations', 'Countries',
 			})
 
 			// Show modal
-			$scope.showModal = function() {
+			$scope.showModal = function( organization) {
+				
+				angular.copy(organization, $scope.organizationSel)
+				
 				$("#modalOrganization").modal();
 			}
 
@@ -34,11 +38,20 @@ app.controller('organizationCtrl', [ '$scope', 'Organizations', 'Countries',
 			
 			$scope.showCities = function() {				
 				stateId= $scope.organizationSel.stateId;
-				console.log(stateId);
 				Cities.loadCitiesByState(stateId).then(function(){					
 				$scope.cities = Cities;
-				console.log(Cities);
 				})	
+			}
+			
+			//Save function
+			$scope.saveOrganizationFrm = function(organizationSel, frmOrganization){
+				
+				Organizations.saveOrganization(organizationSel).then(function(){
+					$("#modalOrganization").modal('hide');
+					$scope.organizationSel = {};
+					frmOrganization.autoValidateFormOptions.resetForm();
+				});
+				
 			}
 
 		} ]);

@@ -5,14 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class GeneralController {
 	
 	@RequestMapping("/")
 	public String welcome(Model model) {
-		//model.addAttribute("greeting", "Biernvenidos !");
-		//model.addAttribute("tagline", "Cooperative Nettoieprêt");
-		
 		return "welcome";
+	}
+	
+	@RequestMapping("countries")
+	public String country(Model model) {
+		return "countries";
+	}
+	
+	@RequestMapping("/organizations")
+	public String organizations(Model model) {
+		return "organizations";
 	}
 
 }

@@ -8,23 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.cleansolution.general.model.Country;
 import com.cleansolution.general.presentation.businessDelegate.IGeneralBusinessDelegate;
 
 
-@Controller
+@RestController
+@RequestMapping("/")
 public class CountryController {
 	
 	@Autowired
 	private IGeneralBusinessDelegate businessDelegate;
 	
-	@RequestMapping("/countries")
-	public String welcome(Model model) {
-		return "countries";
-	}
 	
-	
-	@RequestMapping(value="/allCountries", method = RequestMethod.GET)
+	@RequestMapping(value="allCountries", method = RequestMethod.GET)
 	public @ResponseBody List<Country> allCountries() throws Exception{
 		return businessDelegate.getCountry();
 		

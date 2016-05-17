@@ -34,7 +34,7 @@
 		<li ng-class="mDashboard"><a href="#"> <i class="fa fa-link"></i><span>Dashboard</span></i></a></li>
 		<li><a href="#"> <i class="fa fa-link"></i><span>Admin</span></a>
 				<ul class="treeview-menu">
-					<li ng-class="mCity"><a href="${pageContext.request.contextPath}/organization"><i class="fa fa-link"></i> Organization</a></li>
+					<li ng-class="mCity"><a href="${pageContext.request.contextPath}/organizations"><i class="fa fa-link"></i> Organization</a></li>
 					<li ng-class="mCountry"><a href="${pageContext.request.contextPath}/countries"><i class="fa fa-link"></i> Paises</a></li>
 					
 			</ul>

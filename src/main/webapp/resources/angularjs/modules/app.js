@@ -1,5 +1,5 @@
 var app = angular.module('cleanSolutionApp', [
-                          'ngRoute',
+                          'ngRoute','jcs-autoValidate',
                           'angularUtils.directives.dirPagination',
                           'cleanSolutionApp.configuration',
                           'cleanSolutionApp.messages',
@@ -13,6 +13,15 @@ var app = angular.module('cleanSolutionApp', [
                           'cleanSolutionApp.organizationCtrl',
                           'cleanSolutionApp.stateCtrl'
                           ]);
+
+angular.module('jcs-autoValidate')
+.run([
+    'defaultErrorMessageResolver',
+    function (defaultErrorMessageResolver) {
+        defaultErrorMessageResolver.setI18nFileRootPath('resources/angularjs/lib');
+        defaultErrorMessageResolver.setCulture('es-co');
+    }
+]);
 
 app.controller('mainCtrl',['$scope','Configuration','Messages','Notifications',function($scope, Configuration, Messages,Notifications) {
 	

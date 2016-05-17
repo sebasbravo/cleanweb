@@ -38,14 +38,14 @@
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="true"/>
-				<property name="showSql" value="true"/>
+				<property name="showSql" value="false"/>
 			</bean>
 		</property>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
@@ -55,7 +55,20 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
+	 <!-- Configure to plugin JSON as request and response in method handler -->
+   <!--  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+      -->
+    <!-- Configure bean to convert JSON to POJO and vice versa -->
+    <!-- <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </bean> 
+	 -->
 	<context:component-scan base-package="com.cleansolution" />
-	
+<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 </beans>

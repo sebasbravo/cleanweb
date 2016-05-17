@@ -17,7 +17,7 @@ app.factory('Cities', [ '$http', '$q', function($http, $q) {
 	
 	loadCitiesByState : function() {
 		var d = $q.defer();
-		$http.get('citiesByState?stateId='+stateId).success(function(data) {
+		$http.get('citiesByState/'+stateId).success(function(data) {
 			self.cities = data;
 			return d.resolve();
 		});

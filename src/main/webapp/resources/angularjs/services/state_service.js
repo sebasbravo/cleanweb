@@ -11,7 +11,7 @@ app.factory('States', [
 
 				loadPageSates : function(countryId) {
 					var d = $q.defer();
-					$http.get('statesByCountry?countryId=' + countryId)
+					$http.get('statesByCountry/'+countryId)
 							.success(function(data) {
 								self.statesByCountry = data;
 								return d.resolve();

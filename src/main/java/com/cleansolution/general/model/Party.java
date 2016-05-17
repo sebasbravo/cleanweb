@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "party", schema = "public")
+@NamedQueries({
+	@NamedQuery(name = "Party.findByPartyId", query = "SELECT c FROM Party c WHERE c.partyId = :partyId")
+})
 public class Party implements Serializable {
 
 	
@@ -25,8 +30,8 @@ public class Party implements Serializable {
 	
 	@Id
 	@Column(name = "party_id", unique = true, nullable = false)
-	/*@GeneratedValue(strategy = GenerationType.AUTO)
-	@Basic(optional = false)*/
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Basic(optional = false)
 	private Integer partyId;
 	@Column(name = "phone", length = 15)
 	private String phone;

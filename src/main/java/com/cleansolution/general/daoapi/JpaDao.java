@@ -7,7 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+
+@SuppressWarnings({"unchecked"})
+@Transactional
 public class JpaDao<T,ID extends Serializable> implements GenericDao<T, ID> {
 	
 	private Class<T> entityClass;
@@ -17,8 +22,6 @@ public class JpaDao<T,ID extends Serializable> implements GenericDao<T, ID> {
     protected EntityManager entityManager;
     private int maxResults = 0;
     
-    
-	@SuppressWarnings("unchecked")
 	public JpaDao() {
 		super();
 		this.entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
@@ -36,31 +39,31 @@ public class JpaDao<T,ID extends Serializable> implements GenericDao<T, ID> {
 
 
 	@Override
-	//@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
+	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS)
 	public T findById(ID id) throws DaoException {
 		return (T)entityManager.find(entityClass, id);
 	}
 
 	@Override
-	//@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
 	public void persist(T obj) throws DaoException {
 		entityManager.persist(obj);
 	}
 
 	@Override
-	//@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
 	public void merge(T obj) throws DaoException {
 		entityManager.merge(obj);
 	}
 
 	@Override
-	//@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
 	public void remove(T obj) throws DaoException {
 		entityManager.remove(obj);
 	}
 
 	@Override
-	//@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
 	public void deleteById(ID id) throws DaoException {
 		T toDelete = findById(id);
 		entityManager.remove(toDelete);
@@ -68,7 +71,7 @@ public class JpaDao<T,ID extends Serializable> implements GenericDao<T, ID> {
 
 
 	@Override
-	//@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRED)
 	public void deleteAll() throws DaoException {
 		String queryString = "delete from " + entityClass.getName();
         Query queryObject = entityManager.createQuery(queryString);

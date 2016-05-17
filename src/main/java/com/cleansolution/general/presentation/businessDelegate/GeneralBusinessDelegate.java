@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cleansolution.general.dto.CitiesDTO;
 import com.cleansolution.general.dto.CountryDTO;
+import com.cleansolution.general.dto.OrganizationDTO;
 import com.cleansolution.general.dto.StatesDTO;
 import com.cleansolution.general.model.Cities;
 import com.cleansolution.general.model.Country;
@@ -87,29 +88,29 @@ public class GeneralBusinessDelegate implements IGeneralBusinessDelegate {
 	}
 
 	@Override
-	public List<Organization> getOrganizations() throws Exception {
+	public List<OrganizationDTO> getOrganizations() throws Exception {
 		return organizationService.getOrganizations();
 	}
 
 	@Override
-	public void saveOrganization(Organization organization) throws Exception {
+	public void saveOrganization(OrganizationDTO organization) throws Exception {
 		organizationService.saveOrganization(organization);
 		
 	}
 
 	@Override
-	public void updateOrganization(Organization organization) throws Exception {
+	public void updateOrganization(OrganizationDTO organization) throws Exception {
 		organizationService.updateOrganization(organization);
 		
 	}
 
 	@Override
-	public Organization findOrganizationByNis(String nis) throws Exception {
+	public OrganizationDTO findOrganizationByNis(String nis) throws Exception {
 		return organizationService.findOrganizationByNis(nis);
 	}
 
 	@Override
-	public Organization findOrganizationByName(String name) throws Exception {
+	public OrganizationDTO findOrganizationByName(String name) throws Exception {
 		return organizationService.findOrganizationByName(name);
 	}
 	

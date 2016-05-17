@@ -10,8 +10,10 @@ public class OrganizationDTO implements Serializable{
 	private Integer organizationId;
 	private String name;
 	private String nis;
-	
 	private Integer addressId;
+	private Integer countryId;
+	private Integer stateId;
+	private Integer cityId;
 	private String phone;
 	private String cel;
 	private String email;
@@ -19,6 +21,11 @@ public class OrganizationDTO implements Serializable{
 	private String taxFederal;
 	private String taxProvincial;
 	private Boolean status;
+	private String apartment;
+	private String codePostal;
+	private String addressCivic;
+	
+	
 	public Integer getPartyId() {
 		return partyId;
 	}
@@ -90,6 +97,42 @@ public class OrganizationDTO implements Serializable{
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+	public Integer getCountryId() {
+		return countryId;
+	}
+	public void setCountryId(Integer countryId) {
+		this.countryId = countryId;
+	}
+	public Integer getStateId() {
+		return stateId;
+	}
+	public void setStateId(Integer stateId) {
+		this.stateId = stateId;
+	}
+	public Integer getCityId() {
+		return cityId;
+	}
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
+	}
+	public String getApartment() {
+		return apartment;
+	}
+	public void setApartment(String apartment) {
+		this.apartment = apartment;
+	}
+	public String getCodePostal() {
+		return codePostal;
+	}
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+	public String getAddressCivic() {
+		return addressCivic;
+	}
+	public void setAddressCivic(String addressCivic) {
+		this.addressCivic = addressCivic;
 	}
 	
 	

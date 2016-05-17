@@ -10,31 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cleansolution.general.model.States;
 import com.cleansolution.general.presentation.businessDelegate.IGeneralBusinessDelegate;
 
-@Controller
+@RestController
+@RequestMapping("/")
 public class StateController {
 	
 	@Autowired
 	private IGeneralBusinessDelegate businessDelegate;
 	
-	@RequestMapping("/states")
-	public String states(Model model) {
-		return "states";
-	}
 	
 	
-	@RequestMapping(value="/allStates", method = RequestMethod.GET)
+	@RequestMapping(value="allStates", method = RequestMethod.GET)
 	public @ResponseBody List<States> allStates() throws Exception{
 		return businessDelegate.getStates();
 		
 	}
 	
 
-	@RequestMapping(value="/statesByCountry", method = RequestMethod.GET)
-	public @ResponseBody List<States> statesByCountry(@RequestParam(value="countryId", required=true) Integer countryId) throws Exception{
+	@RequestMapping(value="statesByCountry/{countryId}", method = RequestMethod.GET)
+	public @ResponseBody List<States> statesByCountry(@PathVariable("countryId") Integer countryId) throws Exception{
 		return businessDelegate.getStatesByCountry(countryId);
 	}
 		
